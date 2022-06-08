@@ -19,8 +19,20 @@ for (let i = 0; i < board.length; i++) {
             document.querySelector("#winner").innerHTML = winner + ' is the winner!';
             turn = 2;
         }
+        let cats = false;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i].innerHTML === '') {
+                cats = true;
+            }
+        }
+        if (cats === false) {
+            document.querySelector("#winner").innerHTML = 'Cats game!';
+            turn = 2;
+        }   
     }
+
 }
+
 
 function checkWinner(){
     if (board[0].innerHTML === board[1].innerHTML && board[1].innerHTML === board[2].innerHTML && board[0].innerHTML !== '') {
