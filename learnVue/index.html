@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="app">
+        <div v-for="item in items" v-bind:style="{color:item.color, backgroundColor: 'blue'}">
+        {{item.text}}
+    
+        <!-- <div v-if="item.show">{{ message }}</div> -->
+        <!-- <div v-show="item.show">{{ message }}</div> -->
+        <!-- <div v-else> Goodbye vue</div> -->
+        <!-- <button v-on:click="toggleTextandAddA_global(item)">Hide Text</button> -->
+        </div>
+        
+        <div v-on:click="isNowBlue" v-bind:style="{color:theColor}">click Me</div>
+        <!-- <div v-on:click="isNowBlue()" v-else v-bind:style="{color:'red'}">click Me</div> -->
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

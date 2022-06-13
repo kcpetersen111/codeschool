@@ -1,0 +1,38 @@
+[v-clock]{
+    display: none;
+}
+
+body{
+    background-image: linear-gradient(to bottom right, #00bcd4, #d47100);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: 25px;
+    text-align: center;
+    
+        /* background-position: center; */
+    /* background-color: #00bcd4; */
+    /* align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+#ball{
+    height: 450px;
+    width: 450px;
+    border: 10px solid #000;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#message{
+    text-align: center;
+    /* margin-top: 50px; */
+    font-size: 50px;
+
+}
