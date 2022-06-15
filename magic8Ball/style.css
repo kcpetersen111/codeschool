@@ -1,4 +1,4 @@
-[v-clock]{
+[v-cloak]{
     display: none;
 }
 
@@ -19,9 +19,9 @@ body{
 }
 
 #ball{
-    height: 450px;
-    width: 450px;
-    border: 10px solid #000;
+    height: 300px;
+    width: 300px;
+    border: 150px solid #000;
     border-radius: 50%;
     background-color: #fff;
     margin: auto;
@@ -34,5 +34,7 @@ body{
     text-align: center;
     /* margin-top: 50px; */
     font-size: 50px;
+    transition: 1s;
+
 
 }

@@ -1,0 +1,101 @@
+[v-cloak] {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,body,main {
+    width: 100%;
+    height: 100%;
+}
+
+body #app {
+    display: grid;
+    grid-template-columns: 3fr 1fr 7fr;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    max-height: 100vh;
+    /* background-color: black; */
+}
+
+                                                                            /* Left column */
+body #app #left {
+    grid-row:1/1;
+    grid-column:1/2;
+    text-align: center;
+    overflow-y: auto;
+    max-height: initial;
+}
+
+#search-album-area{
+    display: flex;
+    flex-wrap: wrap;
+    /* overflow-y: scroll; */
+    padding: 1rem;
+}
+
+#left #search-album-area img{
+    width: 33.33%;
+    aspect-ratio: 1/1;
+}
+
+                                                                /* middle column */
+body #app #middle {
+    grid-row:1/1;
+    grid-column:2/3;
+}
+                                                            /* right column */
+body #app #right {
+    grid-row:1/1;
+    grid-column:3/4;
+    display: flex;
+    /* grid-template-columns: auto minmax(200px, auto); */
+
+}
+#pickedAlbumArea{
+    height: 700px;
+    aspect-ratio: 1/1;
+
+    /* background-color: antiquewhite; */
+    overflow: hidden;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pickedAlbumSlot{
+    /* border:1px solid black; */
+    background-color: aliceblue;
+
+}
+.pickedAlbum{
+    width: 100%;
+    height: 100%;
+    /* aspect-ratio: 1/1; */
+} .pickedAlbum:hover{
+    border: 2px solid red;
+}
+
+.top-10{
+    width:19%;
+    margin: .5%;
+    aspect-ratio: 1/1;
+    /* background-color: aqua; */
+}
+.top-22{
+    width: calc(90% / 6);
+    margin: calc(10%/12);
+    aspect-ratio: 1/1;
+    /* background-color: pink; */
+
+}
+.top-42{
+    width: calc(90% /10);
+    margin: calc(10%/20);
+    aspect-ratio: 1/1;
+    /* background-color: yellow; */
+}

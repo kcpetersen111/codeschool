@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app" v-clock>
+    <div id="app" v-cloak>
         <!-- magic 8 ball <br> -->
         <div id="ball">
-            <div id="message">{{message}}</div> 
+            <div v-bind:style="{color:messageColor}" id="message">{{message}}</div> 
         </div>
         <br>
         <br>
-        {{prompt}} <br>
-        
-        <input v-model="question" v-on:keyDown.enter="askQuestion()"> <br>
-        <button v-show="isValidQuestion()" v-on:click="askQuestion">Ask a Question</button>
-    </div>
+        <div v-show="ready">
+            {{prompt}} <br>
+            
+            <input v-model="question" v-on:keyDown.enter="askQuestion()"> <br>
+            <button v-show="isValidQuestion()" v-on:click="askQuestion()">Ask a Question</button>
+        </div>
+        </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="app.js"></script>
