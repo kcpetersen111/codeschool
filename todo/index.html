@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>Todo App</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Todo App</h1>
+        <div id="input-area">
+            Name: <input placeholder="name" v-model="nameInput"><br>
+            Description: <input placeholder="Description" v-model="descriptionInput"><br>
+            Done: <input type="checkbox" v-model="doneInput"><br>
+            Date: <input type="date" v-model="dateInput"><br>
+            Tags:<br>
+            <div v-for="tag in tags" >
+                {{tag}}: <input type="checkbox" v-model="tagsInput[tag]">
+            </div>
+            <button @click="addTodo()">Add Todo</button>
+            
+        </div>
+        <div id="list-area">
+
+            <div v-for="(todo,index) in todos" class="todo">
+                <span class="todo-name" v-bind:class="{strikethrough : todo.done}" v-if="editingTodo!=index">{{todo.name}} </span>
+                <span v-if="editingTodo==index">Name: </span><input placeholder="Name" v-model="todo.name" v-if="editingTodo==index">
+                <br>
+
+                Description: <span v-if="editingTodo!=index">{{todo.description}} </span> 
+                <input placeholder="Description" v-model="todo.description" v-if="editingTodo==index">
+                <br>
+                
+                Done: <span v-if="editingTodo!=index">{{todo.done}} </span> 
+                <input  v-model="todo.done" v-if="editingTodo==index" type="checkbox">
+                <br>
+
+                Deadline: <span v-if="editingTodo!=index">{{todo.deadline}} </span> 
+                <input type="date" v-model="todo.deadline" v-if="editingTodo==index">
+                <br >
+
+
+                Tags: {{todo.tags}}
+
+
+                <button v-if="editingTodo != index" @click="updateEditIndex(index)" class="green-button">edit</button>
+                <button v-if="editingTodo == index" @click="editTodo" class="red-button">Submit</button>
+            </div>
+
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
