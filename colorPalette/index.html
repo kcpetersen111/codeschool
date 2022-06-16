@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RGB Color Palette</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="inputs-area">
+            <h1>RGB Color Palette</h1>
+
+            <!-- 1. Color Inputs -->
+            <!-- Red Input - modeled with a variable    (extra attributes: type='number' max='255' min='0') -->
+            Red: <input type="number" max="255" min="0" v-model="red">
+            <!-- Green Input - repeat previous with new variable -->
+            Green: <input type="number" max="255" min="0" v-model="green">
+            <!-- Blue Input -  "                               " -->
+            Blue: <input type="number" max="255" min="0" v-model="blue">
+
+            <br><br>
+
+            <!-- 3. Add Button -->
+            <!-- Add Color Button - adds the color when clicked    (extra attributes: none) -->
+
+            <button @click="addColor()">Add Color</button>
+
+            <br><br>
+
+            <!-- 2. Color Preview -->
+            <!-- Preview Div - displays current rgb combination 
+                              using computed variable rgbString    (extra attributes: id='color-preview') -->
+            <div id="color-preview" :style="{backgroundColor: rgbString}"></div>
+
+        </div>
+        <div id="palette-area">
+
+            <!-- 4. Color Palette -->
+            <!-- Individual Colors - loop over each colorString in your color array    (extra attributes: none) -->
+
+                <!-- a. Color Display - bind the backgroundColor style to the 
+                                        colorString from your loop    (extra attributes: class='palette-color') -->
+
+                <!-- b. Color String - use inline double curly braces to display the colorString    (extra attributes: class='palette-color-string') -->
+                <div v-for="color in palette">
+                    <div class="palette-color" :style="{backgroundColor: color}"></div>
+                    <div class="palette-color-string">{{color}}</div>
+                </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
