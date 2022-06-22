@@ -15,42 +15,53 @@
             Description: <input placeholder="Description" v-model="descriptionInput"><br>
             Done: <input type="checkbox" v-model="doneInput"><br>
             Date: <input type="date" v-model="dateInput"><br>
-            Tags:<br>
-            <div v-for="tag in tags" >
+            Tags:<br>&nbsp;
+            <span v-for="tag in tags" >
                 {{tag}}: <input type="checkbox" v-model="tagsInput[tag]">
-            </div>
+            </span><br>
             <button @click="addTodo()">Add Todo</button>
             
         </div>
         <div id="list-area">
 
-            <div v-for="(todo,index) in todos" class="todo">
+            <div v-for="(todo,index) in todos" class="todo" v-bind:class="{blueBackground: newTodoId == todo.id}"> 
+
                 <span class="todo-name" v-bind:class="{strikethrough : todo.done}" v-if="editingTodo!=index">{{todo.name}} </span>
-                <span v-if="editingTodo==index">Name: </span><input placeholder="Name" v-model="todo.name" v-if="editingTodo==index">
+                <span v-if="editingTodo==index">Name: </span><input placeholder="Name" v-model="editingTodoCopy.name" v-if="editingTodo==index">
                 <br>
 
                 Description: <span v-if="editingTodo!=index">{{todo.description}} </span> 
-                <input placeholder="Description" v-model="todo.description" v-if="editingTodo==index">
+                <input placeholder="Description" v-model="editingTodoCopy.description" v-if="editingTodo==index">
                 <br>
                 
                 Done: <span v-if="editingTodo!=index">{{todo.done}} </span> 
-                <input  v-model="todo.done" v-if="editingTodo==index" type="checkbox">
+                <input  v-model="editingTodoCopy.done" v-if="editingTodo==index" type="checkbox">
                 <br>
 
                 Deadline: <span v-if="editingTodo!=index">{{todo.deadline}} </span> 
-                <input type="date" v-model="todo.deadline" v-if="editingTodo==index">
+                <input type="date" v-model="editingTodoCopy.deadline" v-if="editingTodo==index">
                 <br >
 
 
-                Tags: {{todo.tags}}
+                Tags: <span v-if="editingTodo!=index" v-for="tag in todo.tags">{{tag}}&nbsp;</span>
+                <span v-if="editingTodo==index">
+                    <span v-for="(tag, index) in tags" >{{tag}}: <input type="checkbox" v-model="editingTags[index]"> &nbsp; </span>
+                </span>
+                <br>
 
 
-                <button v-if="editingTodo != index" @click="updateEditIndex(index)" class="green-button">edit</button>
-                <button v-if="editingTodo == index" @click="editTodo" class="red-button">Submit</button>
+                <button v-if="editingTodo != index" @click="updateEditIndex(todo, index)" class="green-button">edit</button>
+                <button v-if="editingTodo == index" @click="updateEditIndex({},-1)" class="red-button">Cancel</button>
+                <button v-if="editingTodo == index" @click="deleteTodo(todo)" class="red-button">Delete</button>
+                <button v-if="editingTodo == index" class="green-button" @click="putTodo(todo)">Submit</button>
             </div>
 
             
         </div>
+        <!-- this is the filter buttons at the bottom -->
+        <!-- <div>
+            <span v-for="(tag, index) in tagFilter" >{{tag}}: <input type="checkbox" v-model="tagFilter[tag]"> &nbsp; </span>
+        </div> -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="app.js"></script>

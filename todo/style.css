@@ -119,3 +119,7 @@ body #app .todo input {
 .strikethrough{
     text-decoration: line-through;
 }
+
+.blueBackground{
+    background-color: powderblue;
+}
