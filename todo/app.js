@@ -72,11 +72,6 @@ var app = new Vue({
         
 
         postTodo: function(newTodo){
-            // let newTodo = {
-            //     name:"postTodo js",
-            //     done:true
-            // };
-
 
             fetch(url+"/todo",{
                 method: "POST",
